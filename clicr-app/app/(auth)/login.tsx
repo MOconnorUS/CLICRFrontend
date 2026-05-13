@@ -14,7 +14,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        shouldCreateUser: true, // creates account if doesn't exist
+        shouldCreateUser: true,
       },
     })
 
@@ -39,8 +39,6 @@ export default function Login() {
     if (error) {
       Alert.alert('Invalid code', error.message)
     }
-    // No need to handle success here — onAuthStateChange in _layout.tsx
-    // will detect the new session and redirect automatically
 
     setLoading(false)
   }

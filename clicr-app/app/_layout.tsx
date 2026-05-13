@@ -11,13 +11,11 @@ export default function RootLayout() {
   const segments = useSegments() as string[];
 
   useEffect(() => {
-    // Check if a session already exists on app load
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
       setInitialized(true)
     })
 
-    // Listen for auth state changes (login, logout, token refresh)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session)
@@ -33,13 +31,13 @@ export default function RootLayout() {
     const inAuthGroup = segments[0] === '(auth)'
 
     if (!session && !inAuthGroup) {
-      // No session, send to login
-      // COMMENTED OUT FOR TESTING
       router.replace('/(auth)/login' as any)
+
+      // For Testing Purposes ONLY - used incase we get rate limited on supabase
       // router.replace('/(app)' as any)
     } else if (session && inAuthGroup) {
-      // Has session, send to main app
       router.replace('/(app)' as any)
+      
     }
   }, [session, initialized])
 
