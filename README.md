@@ -14,6 +14,6 @@ Simplified prototype implementation of CLICR mobile app frontend
 - Supabase
 
 ## Notes
-This project is configured for local use only
-The UI for this project is not the most refined as functionality was the core focus
-Environment variables are intentionally omitted
+This project is configured for local use only  
+The UI for this project is not the most refined as functionality was the core focus 
+Environment variables are intentionally omitted 
